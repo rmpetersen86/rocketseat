@@ -18,9 +18,9 @@
         </tr>
         <tr>
             <td>Explorer Lab #1</td>
-            <td><a href="./labs/explorer-lab-01">Cartão Dinâmico</a></td>
+            <td><a href="./labs/explorer-01">Cartão Dinâmico</a></td>
             <td>22/10/22</td>
-            <td align="center"><img src="./labs/explorer-lab-01/.github/preview.png"
+            <td align="center"><img src="./labs/explorer-01/.github/preview.png"
             width="70%"/></td>            
         </tr>
         <tr>
