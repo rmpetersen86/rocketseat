@@ -1,4 +1,4 @@
-<h1 align="center">  Projeto 01 em React Native - Bootcamp IGNITE  </h1>
+<h1 align="center">  Desafio 01 em React Native - Bootcamp IGNITE  </h1>
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -14,9 +14,9 @@
 
 <br>
 
-<p align="center">
+<!-- <p align="center">
   <img alt="screenshot" src="./.github/preview.png" width="50%">
-</p>
+</p> -->
 
 ## 🚀 Tecnologias
 
@@ -29,21 +29,21 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Projeto para o aprendizado de React-Native, com um campo para inserção de nome de participante, adição de participante a lista, regras que evitam nomes duplicados, remoção de participante e confirmação de remoção de participante.
+<!-- Projeto para o aprendizado de React-Native, com um campo para inserção de nome de participante, adição de participante a lista, regras que evitam nomes duplicados, remoção de participante e confirmação de remoção de participante. -->
 
 ## 🔖 Layout
 
-Você pode visualizar o projeto através do [EXPO Snack](https://snack.expo.dev/@r.petersen/github.com-rmpetersen86-rocketseat:ignite-iamhere?platform=android). Ou, executar localmente, instruções na sessão de INSTALAÇÃO
+<!-- Você pode visualizar o projeto através do [Figma](https://www.figma.com/file/1XfZQGSWk4HWjvwcjd2nOP/ToDo-List/duplicate) e o projeto em funcionamento com [EXPO Snack](https://snack.expo.dev/@r.petersen/github.com-rmpetersen86-rocketseat:ignite-iamhere?platform=android). Ou, executar localmente, instruções na sessão de INSTALAÇÃO -->
 
 ## 📄 Funcionalidades
 
-- [x] Exibir lista de participantes.
+<!-- - [x] Exibir lista de participantes.
 - [x] Adicionar participante a lista.
 - [x] Remover participante da lista.
 - [x] Evitar adição de nome existente.
 - [x] Apresentar mensagem de confirmação de remoção de participante.
 - [x] Apresentar data atual.
-- [x] Apresentar mensagem de lista vazia.
+- [x] Apresentar mensagem de lista vazia. -->
 
 ## 📝 Instalação
 
@@ -51,7 +51,7 @@ Você pode visualizar o projeto através do [EXPO Snack](https://snack.expo.dev/
 
 Para executar o código localmente, são necessários os seguintes softwares e ferramentas: [Node.js](https://nodejs.org/en/), [Expo](https://expo.io/), Um dispositivo físico Android/IOS(necessário ter o APP Expo Go) ou um emulador, opcional IDE como o [VSCode](https://code.visualstudio.com/) e ferramenta de linha de comando [Git](https://git-scm.com/),
 
-```
+<!-- ```
 # Clone ou baixe este repositório.
 
 $ git clone https://github.com/rmpetersen86/rocketseat/ignite/iamhere.git
@@ -68,7 +68,7 @@ $ npx expo start
 
 # Leia o Código QR com o APP Expo GO ou com a Câmera do seu dispositivo ou, com o emulador aberto, no terminal onde o APP está sendo executado, pressione "a" para executar no emulador Android ou I para executar no emulador IOS
 
-```
+``` -->
 
 ## :memo: Licença
 
