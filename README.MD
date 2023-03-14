@@ -14,7 +14,10 @@
             <td>Ignite</td>
             <td><a href="./ignite/iamhere">I am here</a></td>
             <td>14/03/23</td>
-            <td align="center" height="150px"><img src="./ignite/iamhere/.github/preview.png"/></td>
+            <td align="center" height="150px"><img
+            src="./ignite/iamhere/.github/preview.png"
+            style="display: inline-block; margin: 0 auto; max-width: 200px">
+            /></td>
         </tr>
         <tr>
             <td>Explorer Lab #1</td>
