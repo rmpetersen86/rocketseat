@@ -14,52 +14,59 @@
             <td>Ignite</td>
             <td><a href="./ignite/iamhere">I am here</a></td>
             <td>14/03/23</td>
+<<<<<<< HEAD
             <td align="center" height="150px"><img
             src="./ignite/iamhere/.github/preview.png"
             style="display: inline-block; margin: 0 auto; max-width: 200px;"/>
             </td>
+=======
+            <td align="center"><img src="./ignite/iamhere/.github/preview.png"
+            width="30%"/></td>
+>>>>>>> 0fd445e (Revisando repositorios)
         </tr>
         <tr>
             <td>Explorer Lab #1</td>
             <td><a href="./labs/explorer-lab-01">Cartão Dinâmico</a></td>
             <td>22/10/22</td>
-            <td align="center"><img height="150px" src="./labs/explorer-lab-01/.github/preview.png"/></td>            
+            <td align="center"><img src="./labs/explorer-lab-01/.github/preview.png"
+            width="70%"/></td>            
         </tr>
         <tr>
             <td>Ignite Lab #3</td>
             <td><a href="./labs/ignite-lab-design-system">Design System</a></td>
             <td>22/10/22</td>
-            <td align="center"><img height="150px" src="./labs/ignite-lab-design-system/.github/preview.png"/></td>            
+            <td align="center"><img src="./labs/ignite-lab-design-system/.github/preview.png" width="70%"/></td>            
         </tr>
         <tr>
             <td>NLW #10 - Copa</td>
             <td><a href="./nlw/nlw-copa">Next Level Week - Edição Copa</a></td>
             <td>17/10/22</td>
-            <td align="center"><img height="150px" src="./nlw/nlw-copa/.github/preview.png"/></td>
+            <td align="center"><img src="./nlw/nlw-copa/.github/preview.png" width="40%"
+            /></td>
         </tr>
         <tr>
             <td>NLW #11 - Setup</td>
             <td><a href="./nlw/nlwSetup">Next Level Week - Edição Setup</a></td>
             <td>23/01/22</td>
-            <td align="center"><img height="150px" src="./nlw/nlwSetup/.github/preview.jpg"/></td>
+            <td align="center"><img src="./nlw/nlwSetup/.github/preview.jpg" width="40%"/></td>
         </tr>
         <tr>
             <td>Youtube</td>
             <td><a href="./youtube/copa-card">Crie sua figurinha da copa </a></td>
             <td>25/10/22</td>
-            <td align="center"><img height="150px" src="./youtube/copa-card/.github/preview.png"/></td>
+            <td align="center"><img src="./youtube/copa-card/.github/preview.png" width="40%"/></td>
         </tr>
         <tr>
             <td>Youtube</td>
             <td><a href="./youtube/formulariosNativebase">Formulários com Native Base </a></td>
             <td>25/10/22</td>
-            <td align="center"><img height="150px" src="./youtube/formulariosNativebase/.github/preview.png"/></td>
+            <td align="center"><img src="./youtube/formulariosNativebase/.github/preview.png" width="40%"/></td>
         </tr>
         <tr>
             <td>Youtube</td>
             <td><a href="./youtube/mysticker">Personalize sua figurinha da Copa com React Native </a></td>
             <td>27/10/22</td>
-            <td align="center"><img height="150px" src="./youtube/mysticker/.github/preview.png"/></td>
+            <td align="center"><img src="./youtube/mysticker/.github/preview.png" width="40%"/></td>
         </tr>
     </tbody>
 </table>
