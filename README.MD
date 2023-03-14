@@ -50,9 +50,9 @@
         </tr>
         <tr>
             <td>Youtube</td>
-            <td><a href="./youtube/formulariosNativebase">Formulários com Native Base </a></td>
+            <td><a href="./youtube/formularios-nativebase">Formulários com Native Base </a></td>
             <td>25/10/22</td>
-            <td align="center"><img src="./youtube/formulariosNativebase/.github/preview.png" width="40%"/></td>
+            <td align="center"><img src="./youtube/formularios-nativebase/.github/preview.png" width="40%"/></td>
         </tr>
         <tr>
             <td>Youtube</td>
@@ -72,7 +72,7 @@
 <a href="https://www.linkedin.com/in/rafael-petersen-ab827a14a/">
  <img style="border-radius: 50%;" src="https://github.com/rmpetersen86.png?size=100" width="100px; rounded" alt=""/>
  <br />
- <sub><b>Rafael M. Petersen</b></sub></a> <!-- <a href="https://www.linkedin.com/in/rafael-petersen-ab827a14a/" title="RMPetersen"></a> -->
+ <sub><b>Rafael M. Petersen</b></sub></a>
 
 Feito por Rafael M. Petersen; Entre em contato!
 
