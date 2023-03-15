@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
@@ -31,7 +31,13 @@ export const styles = StyleSheet.create({
     borderRadius: 50,
   },
 
+  checkboxActive: {
+    backgroundColor: "#1E6F9F",
+  },
+
   checkboxChecked: {
+    height: 18,
+    width: 18,
     borderWidth: 0,
   },
 
@@ -62,6 +68,7 @@ export const styles = StyleSheet.create({
     height: 32,
     width: 32,
     backgroundColor: "#333333",
+    borderRadius: 4,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -70,4 +77,4 @@ export const styles = StyleSheet.create({
     color: "#E25858",
     fontSize: 14,
   },
-})
+});

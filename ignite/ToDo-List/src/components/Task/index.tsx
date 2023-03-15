@@ -1,37 +1,38 @@
-import { Text, TouchableOpacity, View } from "react-native"
-import { Ionicons } from "@expo/vector-icons"
-import { styles } from "./styles"
-import { useState } from "react"
+import { Text, TouchableOpacity, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { styles } from "./styles";
+import { useState } from "react";
 
-type Props = {
-  name: string
-  onRemove: () => void
-}
+export type TaskProps = {
+  name: string;
+  done?: boolean;
+  onRemove?: () => void;
+  checkTask?: () => void;
+};
 
-export function Task({ name, onRemove }: Props) {
-  const [checked, setIsChecked] = useState(false)
-  const [focusedTask, setFocusedTask] = useState(false)
-  const [focusedTrash, setFocusedTrash] = useState(false)
+export function Task({ name, done, onRemove, checkTask }: TaskProps) {
+  //const [checked, setIsChecked] = useState(false);
+  /* const [focusedTask, setFocusedTask] = useState(false); */
+  const [focusedTrash, setFocusedTrash] = useState(false);
 
-  function onFocusTask() {
-    setFocusedTask(!focusedTask)
-  }
+  /* function onFocusTask() {
+    setFocusedTask(!focusedTask);
+  } */
 
-  function checkTask() {
-    setIsChecked(!checked)
-  }
+  /* function checkTask() {
+    setIsChecked(!checked);
+  } */
   return (
     <View style={styles.container}>
       <View style={styles.checkboxWrapper}>
         <TouchableOpacity
           style={
-            !checked
-              ? styles.checkbox
-              : [styles.checkbox, styles.checkboxChecked]
+            !done ? styles.checkbox : [styles.checkbox, styles.checkboxChecked]
           }
           onPress={checkTask}
+          activeOpacity={0.2}
         >
-          {checked && (
+          {done && (
             <Ionicons
               name="checkmark-circle"
               size={18}
@@ -41,15 +42,14 @@ export function Task({ name, onRemove }: Props) {
           )}
         </TouchableOpacity>
       </View>
-      <Text
-        style={!checked ? styles.name : [styles.name, styles.nameChecked]}
-        onPress={onFocusTask}
-      >
+      <Text style={!done ? styles.name : [styles.name, styles.nameChecked]}>
         {name}
       </Text>
       <TouchableOpacity
         style={!focusedTrash ? styles.button : styles.buttonActive}
         onPress={onRemove}
+        onPressIn={() => setFocusedTrash(true)}
+        onPressOut={() => setFocusedTrash(false)}
       >
         <Ionicons
           name="trash-outline"
@@ -57,5 +57,5 @@ export function Task({ name, onRemove }: Props) {
         />
       </TouchableOpacity>
     </View>
-  )
+  );
 }

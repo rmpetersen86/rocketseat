@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
@@ -32,6 +32,7 @@ export const styles = StyleSheet.create({
     padding: 16,
     color: "#F2F2F2",
     fontSize: 16,
+    fontFamily: "Inter_400Regular",
     borderColor: "#0D0D0D",
     borderWidth: 1,
     marginRight: 4,
@@ -63,16 +64,17 @@ export const styles = StyleSheet.create({
 
   created: {
     fontSize: 14,
-    fontWeight: "700",
+    fontFamily: "Inter_700Bold",
     color: "#4EA8DE",
   },
   finished: {
     fontSize: 14,
-    fontWeight: "700",
+    fontFamily: "Inter_700Bold",
     color: "#8284FA",
   },
 
   countResult: {
+    fontFamily: "Inter_700Bold",
     marginLeft: 8,
     width: 25,
     textAlign: "center",
@@ -98,12 +100,13 @@ export const styles = StyleSheet.create({
 
   tasksEmptyTop: {
     color: "#808080",
-    fontWeight: "700",
+    fontFamily: "Inter_700Bold",
     lineHeight: 20,
   },
 
   tasksEmpty: {
     color: "#808080",
+    fontFamily: "Inter_400Regular",
     lineHeight: 20,
   },
-})
+});

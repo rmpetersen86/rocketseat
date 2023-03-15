@@ -7,44 +7,52 @@ import {
   TextInput,
   TouchableHighlight,
   View,
-} from "react-native"
-import { AntDesign } from "@expo/vector-icons"
-import logo from "../assets/logo.png"
-import clipboard from "../assets/Clipboard.png"
-import { styles } from "./styles"
-import { useState } from "react"
-import { Task } from "../components/Task"
+} from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import logo from "../assets/logo.png";
+import clipboard from "../assets/Clipboard.png";
+import { styles } from "./styles";
+import { useState } from "react";
+import { Task, TaskProps } from "../components/Task";
 
 export function Home() {
-  const [tasks, setTasks] = useState<string[]>([])
-  const [task, setTask] = useState("")
-
-  const [isFocused, setIsFocused] = useState(false)
+  const [tasks, setTasks] = useState<TaskProps[]>([]);
+  const [taskName, setTaskName] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
+  const [tasksDone, setTasksdone] = useState(0);
 
   function handleTasktAdd() {
-    if (task === "") {
-      return Alert.alert("Tarefas", "Insira a descrição da tarefa")
+    let newTask: TaskProps = { name: taskName, done: false };
+    if (taskName === "") {
+      return Alert.alert("Tarefas", "Insira a descrição da tarefa");
     }
-    if (tasks.includes(task)) {
-      return Alert.alert("Tarefas", `A tarefa ja existe`)
-    }
-    setTasks((prevState) => [...prevState, task])
+    /* if (tasks.filter(taskName)) {
+      return Alert.alert("Tarefas", `A tarefa ja existe`);
+    } */
+    setTasks((prevState) => [...prevState, newTask]);
 
-    setTask("")
+    setTaskName("");
+    console.log(tasks);
   }
 
-  function handleTaskRemove(name: string) {
-    Alert.alert("Remover", `Remover a tarefa ${name}?`, [
+  function handleTaskRemove(haveTask: TaskProps) {
+    Alert.alert("Remover", `Remover a tarefa ${haveTask.name}?`, [
       {
         text: "Sim",
         onPress: () =>
-          setTasks((prevState) => prevState.filter((task) => task !== name)),
+          setTasks((prevState) =>
+            prevState.filter((task) => task !== haveTask)
+          ),
       },
       {
         text: "Não",
         style: "cancel",
       },
-    ])
+    ]);
+  }
+
+  function handleTaskDone(doneTask: TaskProps) {
+    task.done = !task.done;
   }
 
   return (
@@ -60,8 +68,8 @@ export function Home() {
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             style={[styles.input, isFocused && styles.inputFocused]}
-            value={task}
-            onChangeText={setTask}
+            value={taskName}
+            onChangeText={setTaskName}
           />
           <TouchableHighlight
             underlayColor={"#4EA8DE"}
@@ -74,21 +82,24 @@ export function Home() {
         <View style={styles.progress}>
           <View style={styles.resultWrap}>
             <Text style={styles.created}>Criadas</Text>
-            <Text style={styles.countResult}>0</Text>
+            <Text style={styles.countResult}>{tasks.length}</Text>
           </View>
           <View style={styles.resultWrap}>
             <Text style={styles.finished}>Concluídas</Text>
-            <Text style={styles.countResult}>0</Text>
+            <Text style={styles.countResult}>{tasksDone}</Text>
           </View>
         </View>
         <FlatList
           data={tasks}
-          keyExtractor={(item) => item}
+          keyExtractor={(item) => item.name}
           renderItem={({ item }) => (
             <Task
-              name={item}
+              name={item.name}
               onRemove={() => {
-                handleTaskRemove(item)
+                handleTaskRemove(item);
+              }}
+              checkTask={() => {
+                handleTaskDone(item);
               }}
             />
           )}
@@ -107,5 +118,5 @@ export function Home() {
         />
       </View>
     </SafeAreaView>
-  )
+  );
 }
