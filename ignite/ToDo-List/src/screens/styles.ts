@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native"
 
 export const styles = StyleSheet.create({
   container: {
@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   },
 
   content: {
-    height: "100%",
+    flex: 1,
     backgroundColor: "#1A1A1A",
     padding: 24,
   },
@@ -77,6 +77,8 @@ export const styles = StyleSheet.create({
     fontFamily: "Inter_700Bold",
     marginLeft: 8,
     width: 25,
+    paddingVertical: 2,
+    paddingHorizontal: 8,
     textAlign: "center",
     color: "#D9D9D9",
     backgroundColor: "#333333",
@@ -109,4 +111,4 @@ export const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     lineHeight: 20,
   },
-});
+})

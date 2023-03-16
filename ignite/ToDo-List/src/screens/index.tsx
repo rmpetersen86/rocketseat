@@ -7,52 +7,79 @@ import {
   TextInput,
   TouchableHighlight,
   View,
-} from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import logo from "../assets/logo.png";
-import clipboard from "../assets/Clipboard.png";
-import { styles } from "./styles";
-import { useState } from "react";
-import { Task, TaskProps } from "../components/Task";
+} from "react-native"
+import AsyncStorage from "@react-native-async-storage/async-storage"
+import { AntDesign } from "@expo/vector-icons"
+import logo from "../assets/logo.png"
+import clipboard from "../assets/Clipboard.png"
+import { styles } from "./styles"
+import { useEffect, useState } from "react"
+import { Task, TaskProps } from "../components/Task"
 
 export function Home() {
-  const [tasks, setTasks] = useState<TaskProps[]>([]);
-  const [taskName, setTaskName] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
-  const [tasksDone, setTasksdone] = useState(0);
+  const [tasks, setTasks] = useState<TaskProps[]>([])
+  const [taskName, setTaskName] = useState("")
+  const [isFocused, setIsFocused] = useState(false)
 
-  function handleTasktAdd() {
-    let newTask: TaskProps = { name: taskName, done: false };
-    if (taskName === "") {
-      return Alert.alert("Tarefas", "Insira a descrição da tarefa");
+  useEffect(() => {
+    async function reloadTasks() {
+      try {
+        await AsyncStorage.getItem("@ToDoList").then((storedTasks) => {
+          storedTasks != null ? setTasks(JSON.parse(storedTasks)) : null
+        })
+      } catch (e) {
+        return
+      }
     }
-    /* if (tasks.filter(taskName)) {
-      return Alert.alert("Tarefas", `A tarefa ja existe`);
-    } */
-    setTasks((prevState) => [...prevState, newTask]);
+    reloadTasks()
+  }, [])
 
-    setTaskName("");
-    console.log(tasks);
+  useEffect(() => {
+    async function syncTasks() {
+      try {
+        const storedTasks = JSON.stringify(tasks)
+        await AsyncStorage.setItem("@ToDoList", storedTasks)
+      } catch (e) {}
+    }
+    syncTasks()
+  }, [tasks])
+
+  async function handleTasktAdd() {
+    let newTask: TaskProps = { name: taskName, done: false }
+    if (taskName === "") {
+      return Alert.alert("Tarefas", "Insira a descrição da tarefa")
+    }
+    if (tasks.some((task) => task.name === newTask.name)) {
+      return Alert.alert("Tarefas", `A tarefa ja existe`)
+    }
+    setTasks((prevState) => [...prevState, newTask])
+    setTaskName("")
   }
 
-  function handleTaskRemove(haveTask: TaskProps) {
-    Alert.alert("Remover", `Remover a tarefa ${haveTask.name}?`, [
+  function handleTaskRemove(quitTask: TaskProps) {
+    Alert.alert("Remover", `Remover a tarefa ${quitTask.name}?`, [
       {
         text: "Sim",
         onPress: () =>
           setTasks((prevState) =>
-            prevState.filter((task) => task !== haveTask)
+            prevState.filter((task) => task.name !== quitTask.name)
           ),
       },
       {
         text: "Não",
         style: "cancel",
       },
-    ]);
+    ])
   }
 
-  function handleTaskDone(doneTask: TaskProps) {
-    task.done = !task.done;
+  function handleChangeTask(changedTask: TaskProps) {
+    setTasks((prevState) =>
+      prevState.map((task) => {
+        const isChanged =
+          task.name === changedTask.name ? !task.done : task.done
+        return { ...task, done: isChanged }
+      })
+    )
   }
 
   return (
@@ -86,20 +113,24 @@ export function Home() {
           </View>
           <View style={styles.resultWrap}>
             <Text style={styles.finished}>Concluídas</Text>
-            <Text style={styles.countResult}>{tasksDone}</Text>
+            <Text style={styles.countResult}>
+              {tasks.filter((doneTasks) => doneTasks.done).length}
+            </Text>
           </View>
         </View>
+
         <FlatList
           data={tasks}
           keyExtractor={(item) => item.name}
           renderItem={({ item }) => (
             <Task
               name={item.name}
+              done={item.done}
               onRemove={() => {
-                handleTaskRemove(item);
+                handleTaskRemove(item)
               }}
-              checkTask={() => {
-                handleTaskDone(item);
+              onChange={() => {
+                handleChangeTask(item)
               }}
             />
           )}
@@ -118,5 +149,5 @@ export function Home() {
         />
       </View>
     </SafeAreaView>
-  );
+  )
 }

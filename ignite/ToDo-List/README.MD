@@ -14,9 +14,9 @@
 
 <br>
 
-<!-- <p align="center">
-  <img alt="screenshot" src="./.github/preview.png" width="50%">
-</p> -->
+<p align="center">
+  <img alt="imagem com as telas do projeto, mostrando as etapas e funcionalidades do app" src="./.github/preview.jpg" width="80%">
+</p>
 
 ## 🚀 Tecnologias
 
@@ -29,36 +29,46 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-<!-- Projeto para o aprendizado de React-Native, com um campo para inserção de nome de participante, adição de participante a lista, regras que evitam nomes duplicados, remoção de participante e confirmação de remoção de participante. -->
+Desafio do bootcamp Ignite da Rocketseat, que é o projeto de um App para plataforma móvel que permite adicionar tarefas, marcar e desmarcar como concluídas, remover uma tarefa e mostrar a quantidade de tarefas adicionadas e concluídas, o desafio tem seu layout proposto no link para o Figma abaixo e visa fixar os conteúdos apresentados na etapa 1 da trilha ignite de ReactNative, entre os conceitos estão:
+
+- Estados
+- Imutabilidade do estado
+- Listas e chaves no React Native
+- Propriedades
+- Componentização
+
+## 📋 Além do código
+
+Além do desafio proposto, foi adicionada a persistência dos dados mesmo ao encerrar o app e executá-lo novamente, utilizando a biblioteca [@react-native-async-storage/async-storage] (https://react-native-async-storage.github.io/async-storage/docs/usage/), além da utilização do hook useEffect para observar a mudança de estado do vetor que armazena as tarefas e sincronizar com o armazenament assíncrono.
 
 ## 🔖 Layout
 
-<!-- Você pode visualizar o projeto através do [Figma](https://www.figma.com/file/1XfZQGSWk4HWjvwcjd2nOP/ToDo-List/duplicate) e o projeto em funcionamento com [EXPO Snack](https://snack.expo.dev/@r.petersen/github.com-rmpetersen86-rocketseat:ignite-iamhere?platform=android). Ou, executar localmente, instruções na sessão de INSTALAÇÃO -->
+Você pode visualizar o projeto através do [Figma](https://www.figma.com/file/1XfZQGSWk4HWjvwcjd2nOP/ToDo-List/duplicate) e o projeto em funcionamento com [EXPO Snack](https://snack.expo.dev/@r.petersen/github.com-rmpetersen86-rocketseat:ignite-todo-list?platform=android). Ou, executar localmente, instruções na sessão de INSTALAÇÃO
 
 ## 📄 Funcionalidades
 
-<!-- - [x] Exibir lista de participantes.
-- [x] Adicionar participante a lista.
-- [x] Remover participante da lista.
-- [x] Evitar adição de nome existente.
-- [x] Apresentar mensagem de confirmação de remoção de participante.
-- [x] Apresentar data atual.
-- [x] Apresentar mensagem de lista vazia. -->
+- [x] Exibir mensagem de lista vazia.
+- [x] Adicionar tarefa a lista.
+- [x] Impedir de adicionar tarefa sem nome.
+- [x] Marcar ou desmarcar uma tarefa como concluída.
+- [x] Mudar a apresentação visual da tarefa marcada.
+- [x] Remover uma tarefa com confirmação.
+- [x] Apresentar realce de cor em componentes ativos.
 
 ## 📝 Instalação
 
 ### Pré-requisitos
 
-Para executar o código localmente, são necessários os seguintes softwares e ferramentas: [Node.js](https://nodejs.org/en/), [Expo](https://expo.io/), Um dispositivo físico Android/IOS(necessário ter o APP Expo Go) ou um emulador, opcional IDE como o [VSCode](https://code.visualstudio.com/) e ferramenta de linha de comando [Git](https://git-scm.com/),
+Para executar o código localmente, são necessários os seguintes softwares e ferramentas: [Node.js](https://nodejs.org/en/), [Expo](https://expo.io/), Um dispositivo físico Android/IOS(necessário ter o APP Expo Go) ou um emulador, opcionalmente uma IDE como o [VSCode](https://code.visualstudio.com/) e ferramenta de linha de comando [Git](https://git-scm.com/),
 
-<!-- ```
+```
 # Clone ou baixe este repositório.
 
-$ git clone https://github.com/rmpetersen86/rocketseat/ignite/iamhere.git
+$ git clone https://github.com/rmpetersen86/rocketseat/ignite/todo-list.git
 
 # Acesse o diretório onde o repositório foi clonado ou baixado
 #Caso tenha sido baixado, descompacte o arquivo e acesse o diretório
-$ cd iamhere
+$ cd todo-list
 
 # Instale as dependências
 $ npm install
@@ -68,7 +78,7 @@ $ npx expo start
 
 # Leia o Código QR com o APP Expo GO ou com a Câmera do seu dispositivo ou, com o emulador aberto, no terminal onde o APP está sendo executado, pressione "a" para executar no emulador Android ou I para executar no emulador IOS
 
-``` -->
+```
 
 ## :memo: Licença
 

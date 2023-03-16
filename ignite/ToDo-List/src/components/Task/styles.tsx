@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native"
 
 export const styles = StyleSheet.create({
   container: {
@@ -32,7 +32,8 @@ export const styles = StyleSheet.create({
   },
 
   checkboxActive: {
-    backgroundColor: "#1E6F9F",
+    borderColor: "#1E6F9F",
+    backgroundColor: "#1E6F9F20",
   },
 
   checkboxChecked: {
@@ -77,4 +78,4 @@ export const styles = StyleSheet.create({
     color: "#E25858",
     fontSize: 14,
   },
-});
+})
