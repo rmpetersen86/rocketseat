@@ -1,0 +1,17 @@
+ 
+ para configurar os assets para diferentes desnidades de pixel, o asset deve ter o seu nome seguido por @ e o multiplicador de tamanho (2x, 3x, etc...) então para 3 imagens com o nome logo.png por exemplo, ficaria: [logo.png, logo@2x.png, logo@3x.png]; a importação deve-se utilizar apenas o nome padrão da imagem, 
+ 
+ 
+ Path mapping com babel-plugin-module-resolver
+ 
+ para utilizar o 'alias' de caminho, deve ser declarado no arquivo babel.config;
+ para apresentar as sugestões no typescript, deve se declarar os mapeamentos no arquivo tsconfig.json
+ 
+ --------------------------------------------------------
+ 
+ Utilização do Styled components traz a sintaxe de estilização utilizada no CSS para WEB
+ 
+ utilizando a criação de componentes no arquivo de estilização definindo a estilização com o styled.nomeDoCompoente e
+ as propriedades dentro de crase ``, exportando o componente e importando na tela a ser construída.
+
+ para utilizar o intelisense no VSCode, deve se instalar a extensão vscode styled-components
