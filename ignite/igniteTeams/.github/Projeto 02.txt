@@ -41,3 +41,6 @@ que o modulo aceite todos os arquivos com a extensão .png: '*.png';
 
 na estilização utilizando o styledComponents, para estilizar corretamente um componente que será utilizado com as Props do próprio, 
 na sintaxe deve se utilizar a função styled() ao invés do 'syled.NomeDoComponente'.
+
+tipagem de estilos, podem estar preferencialmente no arquivo de estilos do componente, podendo alternar entre estilos condicionais
+
