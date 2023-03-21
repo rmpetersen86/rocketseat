@@ -44,3 +44,7 @@ na sintaxe deve se utilizar a função styled() ao invés do 'syled.NomeDoCompon
 
 tipagem de estilos, podem estar preferencialmente no arquivo de estilos do componente, podendo alternar entre estilos condicionais
 
+o CSS Helper ajuda a fazer apenas uma importação do tema por constante declarada, diminuindo a quantidade de código usando a sintaxe 
+${({theme}) => css`
+  ${theme.FONT_SIZE.SM}px;
+`}
