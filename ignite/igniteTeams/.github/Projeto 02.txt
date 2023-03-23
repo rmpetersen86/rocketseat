@@ -1,0 +1,60 @@
+ 
+ para configurar os assets para diferentes desnidades de pixel, o asset deve ter o seu nome seguido por @ e o multiplicador de tamanho (2x, 3x, etc...) então para 3 imagens com o nome logo.png por exemplo, ficaria: [logo.png, logo@2x.png, logo@3x.png]; a importação deve-se utilizar apenas o nome padrão da imagem, 
+ 
+ 
+ Path mapping com babel-plugin-module-resolver
+ 
+ para utilizar o 'alias' de caminho, deve ser declarado no arquivo babel.config;
+ para apresentar as sugestões no typescript, deve se declarar os mapeamentos no arquivo tsconfig.json
+ 
+ --------------------------------------------------------
+ 
+ Utilização do Styled components traz a sintaxe de estilização utilizada no CSS para WEB
+ 
+ utilizando a criação de componentes no arquivo de estilização definindo a estilização com o styled.nomeDoCompoente e
+ as propriedades dentro de crase ``, exportando o componente e importando na tela a ser construída.
+
+ para utilizar o intelisense no VSCode, deve se instalar a extensão vscode styled-components
+
+ opcionalmente, pode se utilizar o Alias de importação adicionando a sintaxe '* as x' onde x é um nome qualquer e todos as exportações
+ estarão dispopníveis utilizando x.constante exportada.
+
+ Criação de tokens de estilos para centralizar o tema de cores, tamanhos e estilos do APP no arquivo theme/index.ts
+
+ deve-se adicionar uma tipagem para acessar o conteudo do tema no intelisense criando uma interface que extende o theme provider:
+
+import "styled-components";
+import theme from "../theme";
+
+ declare module "styled-components" {
+  type ThemeType = typeof theme;
+
+  export interface DefaultTheme extends ThemeType {}
+}
+
+
+Na estilização, para alterar as propriedades do componente dentro do estilo do styledComponents, utilizar a funcção .attrs() após o nome 
+do componente e como atributo da função a arrow function do tema.
+
+para utilização de extensões de arquivos desconhecidos pelo typescript deve-se declarar a tipagem com a extensão, por exemplo png.d.ts declarando
+que o modulo aceite todos os arquivos com a extensão .png: '*.png';
+
+na estilização utilizando o styledComponents, para estilizar corretamente um componente que será utilizado com as Props do próprio, 
+na sintaxe deve se utilizar a função styled() ao invés do 'syled.NomeDoComponente'.
+
+tipagem de estilos, podem estar preferencialmente no arquivo de estilos do componente, podendo alternar entre estilos condicionais
+servindo para passar propriedades para dentro do estilo para formatação condicional
+
+o CSS Helper ajuda a fazer apenas uma importação do tema por constante declarada, diminuindo a quantidade de código usando a sintaxe 
+${({theme}) => css`
+  ${theme.FONT_SIZE.SM}px;
+`}
+
+o hook useTheme do styled-components permite acessar o tema da aplicação fora do arquivo de estilos, podendo ser desestruturado para acessar apenas
+uma cadeia de propriedades sendo dependente do ThemeProvider
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Tipos de navegação - React Native
+
+Stack Navigator - Navegação em pilha (empilhamento)

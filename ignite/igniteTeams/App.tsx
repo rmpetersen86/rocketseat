@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar"
-import { ThemeProvider } from "styled-components"
+import { ThemeProvider } from "styled-components/native"
 import {
   useFonts,
   Roboto_400Regular,
@@ -7,10 +7,8 @@ import {
 } from "@expo-google-fonts/roboto"
 
 import theme from "./src/theme/index"
-
-import { View, Text } from "react-native"
-import { Groups } from "./src/screens/Groups"
-import { Loading } from "./src/components/Loading"
+import { Groups } from "@screens/Groups"
+import { Loading } from "@components/Loading"
 
 export default function App() {
   let [fontsLoaded] = useFonts({
