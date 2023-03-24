@@ -73,3 +73,19 @@ dentro da área de visualização segura de elementos fisicos da tela de exibiç
 ------------------
 
 Prop Drilling - Compartilhamento de informação de um componente para o outro, deve ser evitado.
+
+Asyncstorage - dados persistentes
+
+  - Armazenamento apenas de string, armazenar objetos deve-se transformar em string com o metodo JSON.stringfy() e para converter
+  para objeto, utilizar o metodo JSON.parse().
+
+hook useEffect executa bloco de comandos ao rendereizar o componente ou adicionando dependencias ao vetor que será executado quando a 
+dependencia for alterada
+
+hook useFocusEffect executa um bloco de código evitando execuções desnecessárias deve ser utilizado em conjunto com o hook useCallback
+
+construtor é chamado no momento que a classe é instanciada
+
+anotar a referncia de um componente através do hook useRef
+
+criação de erros personalizados com o uso de uma classe utilitaria e captando o erro atraves da verificação do instanceof no erro
