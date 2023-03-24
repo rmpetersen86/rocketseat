@@ -58,3 +58,18 @@ uma cadeia de propriedades sendo dependente do ThemeProvider
 Tipos de navegação - React Native
 
 Stack Navigator - Navegação em pilha (empilhamento)
+Tab Navigator - Menu de navegação por padrão na parte inferior
+Drawer Navigator - Característica barra de navegação lateral 
+
+----------------
+
+Criação de arquivo de rotas com @react-navigation/native
+Definição de tipagens de navegação com a criação de um arquivo chamado navigation.d.ts exportando a declaração global do namespace ReactNavigation
+com uma interface RootParamList e os nomes das rotas e os parametros passados utilizando undefined quando não há parametros a serem passados;
+
+Utilização da dependencia react-native-safe-area-context (dependencia de react-navigation), em substituição da View padrão para ajustar os elementos 
+dentro da área de visualização segura de elementos fisicos da tela de exibição (Notch, camera, etc..)
+
+------------------
+
+Prop Drilling - Compartilhamento de informação de um componente para o outro, deve ser evitado.
