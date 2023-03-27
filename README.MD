@@ -11,6 +11,12 @@
     </thead>
     <tbody>        
     <tr>
+            <td>Ignite/Projeto 02</td>
+            <td><a href="./ignite/igniteTeams">igniteTeams</a></td>
+            <td>27/03/23</td>
+            <td align="center"><img src="./ignite/igniteTeams/.github/preview.jpg" width="70%"/></td>
+        </tr>
+    <tr>
             <td>Ignite/Desafio</td>
             <td><a href="./ignite/ToDo-List">ToDo-List</a></td>
             <td>15/03/23</td>
@@ -72,6 +78,17 @@
 ---
 
 ### Autor
+
+<!--
+Theme
+Background: #198C70
+Elipse: #ADFF00
+Layer blur
+passthrough 30%
+fontFamily: Roboto
+fontsize: 80px
+fontWeight: 400
+-->
 
 ---
 
