@@ -1,0 +1,17 @@
+Roteiro para o desenvolvimento do projeto do desafio 02
+
+0 - Identificação do layout do APP
+1 - Inicialização do APP
+2 - Criação dos diretórios base do projeto
+3 - definição do arquivo de temas
+4 - instalação das dependencias da biblioteca de estilização
+5 - instalação das dependencias do plugin module resolver babel
+6 - Configuração do arquivo de declaração de typescript do styled components
+7 - Configuração dos arquivos babel.config e tsconfig para o plugin module-resolver
+8 - Instalação do pacote de icones phospor icons
+9 - instalação das dependencias de fontes e configuração do carregamento das fontes
+10 - Criação do componente de carregamento, primeira tela e configuração do tema
+11 - Teste de execução do APP
+12 - Desenvolvimento dos componentes e prototipação dos elementos.
+13 - Instalação da dependencia SVG
+14 - Inicio da prototipação
