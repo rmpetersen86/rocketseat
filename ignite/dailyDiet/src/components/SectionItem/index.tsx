@@ -1,10 +1,20 @@
-import { Text } from "react-native";
-import { Container } from "./styles";
+import { useTheme } from "styled-components/native"
+import { Container, Description, Hour, OnDiet, Separator } from "./styles"
 
-export function SectionItem() {
+type Props = {
+  hour: string
+  description: string
+  isOnDiet: boolean
+}
+
+export function SectionItem({ hour, description, isOnDiet = false }: Props) {
+  const { COLORS } = useTheme()
   return (
     <Container>
-      <Text>Test</Text>
+      <Hour>{hour}</Hour>
+      <Separator />
+      <Description numberOfLines={1}>{description}</Description>
+      <OnDiet color={isOnDiet ? COLORS.GREEN_MID : COLORS.RED_MID} />
     </Container>
-  );
+  )
 }
