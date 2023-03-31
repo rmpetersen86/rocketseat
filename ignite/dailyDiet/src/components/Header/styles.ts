@@ -3,10 +3,16 @@ import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
   width: 100%;
-  margin: 32px 0;
+  height: 132px;
+  padding: 24px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.COLORS.GRAY_5};
 `;
 
 export const Title = styled.Text`
+  flex: 1;
   ${({ theme }) => css`
     font-size: ${theme.FONT_SIZE.XL}px;
     font-family: ${theme.FONT_FAMILY.BOLD};
@@ -16,11 +22,13 @@ export const Title = styled.Text`
 `;
 
 export const BackButton = styled.TouchableOpacity`
-  flex: 1;
+  position: absolute;
+  top: 54px;
+  left: 24px;
 `;
 
 export const BackIcon = styled(ArrowLeft).attrs(({ theme }) => ({
-  size: 32,
+  size: 24,
   color: theme.COLORS.GRAY_1,
   weight: "light",
 }))``;

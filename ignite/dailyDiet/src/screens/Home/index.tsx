@@ -1,9 +1,9 @@
-import { Button } from "@components/Button"
-import { Percent } from "@components/Percent"
-import { SectionHeader } from "@components/SectionHeader"
-import { SectionItem } from "@components/SectionItem"
-import { ForkKnife } from "phosphor-react-native"
-import { Image, SectionList, Text, View } from "react-native"
+import { Button } from "@components/Button";
+import { Percent } from "@components/Percent";
+import { SectionHeader } from "@components/SectionHeader";
+import { SectionItem } from "@components/SectionItem";
+import { ForkKnife } from "phosphor-react-native";
+import { Image, SectionList, Text, View } from "react-native";
 import {
   AppIcon,
   Avatar,
@@ -11,7 +11,7 @@ import {
   ContentTitle,
   Heading,
   IconTitle,
-} from "./styles"
+} from "./styles";
 
 export function Home() {
   const DATA = [
@@ -65,7 +65,7 @@ export function Home() {
         },
       ],
     },
-  ]
+  ];
   return (
     <Container>
       <Heading>
@@ -80,7 +80,7 @@ export function Home() {
           />
         </Avatar>
       </Heading>
-      <Percent />
+      <Percent total={62.5} />
       <ContentTitle>Refeições</ContentTitle>
       <Button title="Nova refeição" iconName="Plus" />
       <SectionList
@@ -105,5 +105,5 @@ export function Home() {
         ]}
       />
     </Container>
-  )
+  );
 }

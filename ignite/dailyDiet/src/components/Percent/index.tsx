@@ -1,18 +1,32 @@
 import {
+  BackButton,
+  BackIcon,
   Container,
   ForwardButton,
   ForwardIcon,
   Percentage,
+  PercentTypeStyleProps,
   Subtitle,
 } from "./styles";
 
-export function Percent() {
+type Props = {
+  type?: PercentTypeStyleProps;
+  total: number;
+};
+
+export function Percent({ total, type = "WIDGET" }: Props) {
   return (
-    <Container>
-      <ForwardButton>
-        <ForwardIcon />
-      </ForwardButton>
-      <Percentage>65,2%</Percentage>
+    <Container type={type}>
+      {type === "WIDGET" ? (
+        <ForwardButton>
+          <ForwardIcon />
+        </ForwardButton>
+      ) : (
+        <BackButton>
+          <BackIcon />
+        </BackButton>
+      )}
+      <Percentage>{total}%</Percentage>
       <Subtitle>das refeições dentro da dieta</Subtitle>
     </Container>
   );

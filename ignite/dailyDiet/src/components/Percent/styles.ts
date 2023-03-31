@@ -1,15 +1,23 @@
-import { ArrowUpRight } from "phosphor-react-native";
+import { ArrowUpRight, ArrowLeft } from "phosphor-react-native";
 import styled, { css } from "styled-components/native";
 
-export const Container = styled.View`
+export type PercentTypeStyleProps = "WIDGET" | "HEADER";
+
+type Props = {
+  type: PercentTypeStyleProps;
+};
+
+export const Container = styled.View<Props>`
   width: 100%;
-  height: 100px;
+
+  height: ${({ type }) => (type === "WIDGET" ? 100 : 200)}px;
+
   background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
   border-radius: 8px;
   padding: 20px 16px;
   align-items: center;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: ${({ type }) => (type === "WIDGET" ? 40 : 0)}px;
 `;
 
 export const Percentage = styled.Text`
@@ -35,7 +43,19 @@ export const ForwardButton = styled.TouchableOpacity`
   right: 10px;
 `;
 
+export const BackButton = styled.TouchableOpacity`
+  align-self: flex-end;
+  position: absolute;
+  top: 56px;
+  left: 24px;
+`;
+
 export const ForwardIcon = styled(ArrowUpRight).attrs(({ theme }) => ({
+  size: 24,
+  color: theme.COLORS.GREEN_DARK,
+}))``;
+
+export const BackIcon = styled(ArrowLeft).attrs(({ theme }) => ({
   size: 24,
   color: theme.COLORS.GREEN_DARK,
 }))``;
