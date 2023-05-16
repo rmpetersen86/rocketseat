@@ -1,0 +1,94 @@
+npm init -y = inicia o projeto javascript
+
+npm i typescript -D = typescript como dependencia de desenvolvimento
+npm i @types/node -D = tipagens como dependencia de desenvolvimento
+
+npx executa binarios que são instalados pelas bibliotecas
+
+npx tsc --init = inicializa o arquivo de configuração do typescript (Alterar o target para es2020)
+
+criar o diretório src e o arquivo server.tsc
+
+npm i tsx -D = automatiza o processo de converter o código e executa o projeto
+
+
+adicionar o script "dev":"tsx watch src/server.ts"
+
+npm i fastify = framework
+
+
+npm i eslint -D = Padronização de codigo como dependencia de desenvolvimento
+
+instalação do Prisma e configuração para uso do SQLite
+
+npm i prisma -D
+
+npx prisma init --datasource-provider SQLite
+
+inicializar/atualizar as tabelas do banco
+
+npx prisma migrate dev
+
+visualizar o banco de dados
+
+npx prisma studio
+
+instalar a dependencia de acesso ao banco
+
+npm i @prisma/client
+
+------------------------------------------------------
+Criando o projeto react com framework next
+npx create-next-app@latest
+
+conceitos do React:
+
+Componentes -> uma forma de separar a tela em vários pedaços chamados componentes que são uma função que retorna um código html.
+
+Typescript + JSX = TSX
+JSX = Javascript + XML
+
+TailwindCss = Utility classes
+
+-----------------------------------------------------
+
+Configuração do projeto Mobile
+
+npx create-expo-app mobile
+
+adicionar o native-wind
+
+npm i nativewind
+
+e adicionar a dependencia de desenvolvimento
+
+npm i tailwindcss -D
+
+inicializar a configuração do tailwind
+
+npx tailwindcss init
+
+substituir a linha content do arquivo tailwindcss.config.js
+incluir a linha de configuração do babel.config
+
+instalar o eslint e a configuração da rocketseat como dependencia de desenvolvimento
+
+npm i eslint @rocketseat/eslint-config -D
+
+adicionar o arquivo de configuração .eslintrc.json
+com 
+{
+    "extends": [
+        "@rocketseat/eslint-config/react"
+    ]
+}
+
+instalar o plugin do prettier como dependencia de desenvolvimento
+
+npm i prettier-plugin-tailwindcss -D
+
+adicionar o arquivo de configuração prettier.config.js
+com o conteudo:
+module.exports = {
+plugins: [require('prettier-plugin-tailwindcss')]
+}
