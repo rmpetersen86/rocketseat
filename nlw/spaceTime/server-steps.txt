@@ -50,6 +50,15 @@ JSX = Javascript + XML
 
 TailwindCss = Utility classes
 
+o Next possui uma opção de importação de fontes do google 'next/font/google'
+
+adicionar as importações das fontes com o subset, peso e variavel;
+
+alterar o arquivo tailwind.config.json
+
+instalar o pacote de icones lucide-react
+
+npm i lucide-react
 -----------------------------------------------------
 
 Configuração do projeto Mobile
