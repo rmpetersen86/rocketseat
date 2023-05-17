@@ -37,7 +37,19 @@ instalar a dependencia de acesso ao banco
 
 npm i @prisma/client
 
-------------------------------------------------------
+para adicionar colunas não opcionais e não houver dados sensiveis no banco, 
+utilizar o comando npx prisma migrate reset
+
+utilização da biblioteca ZOD, para validação do tipo de variável
+
+npm i zod
+
+adicionar o plugin de configurações
+npm i @fastify/cors
+
+cors é uma técnica de segurança do backend que limita quais endereços poderão acessar o backend
+
+----------------------------WEB--------------------------------------------------
 Criando o projeto react com framework next
 npx create-next-app@latest
 
@@ -50,6 +62,8 @@ JSX = Javascript + XML
 
 TailwindCss = Utility classes
 
+Aula 02
+
 o Next possui uma opção de importação de fontes do google 'next/font/google'
 
 adicionar as importações das fontes com o subset, peso e variavel;
@@ -59,7 +73,7 @@ alterar o arquivo tailwind.config.json
 instalar o pacote de icones lucide-react
 
 npm i lucide-react
------------------------------------------------------
+-----------------------------------------------------MOBILE----------------------
 
 Configuração do projeto Mobile
 
@@ -101,3 +115,49 @@ com o conteudo:
 module.exports = {
 plugins: [require('prettier-plugin-tailwindcss')]
 }
+
+Aula 02 
+
+Importar as configurações de cor do tailwind do projeto WEB;
+
+instalar o pacote expo-google-fonts e as fontes necessarias
+
+npx expo install @expo-google-fonts/roboto @expo-google-fonts/bai-jamjuree expo-font
+
+adicionar a regra no eslint para não criticar o camelcase
+
+"rules": {
+        "camelcase": "off"
+    }
+    
+Adicionar a extensão de fontes no arquivo de configuração do tailwind
+
+fontFamily: {
+        title: 'Roboto_700Bold',
+        body: 'Roboto_400Regular',
+        alt: 'BaiJamjuree_700Bold',
+      },
+      
+Adicionar a declaração dos arquivos de assets no arquivo assets.d.ts
+
+adicionar a biblioteca de importação de SVG
+
+adicionar a biblioteca SVG
+
+expo install react-native-svg
+
+adicionar a biblioteca svg transformer como dependencia de desenvolvimento
+
+npm i -D react-native-svg-transformer
+
+criar um arquivo de confguração na raiz do projeto 
+
+metro.config.js
+
+O tailwind/nativewind só estiliza componentes existentes no react native
+para estilizar componentes criados a partir de svg por exemplo, é necessário 
+criar uma const utilizando a função styled do nativewind que recebe o componente e cria um novo que pode receber estilizações
+
+
+
+
