@@ -1,3 +1,4 @@
+BACKEND -------------------------------------------------------------------------------------
 npm init -y = inicia o projeto javascript
 
 npm i typescript -D = typescript como dependencia de desenvolvimento
@@ -49,6 +50,19 @@ npm i @fastify/cors
 
 cors é uma técnica de segurança do backend que limita quais endereços poderão acessar o backend
 
+para a leitura das variaveis de ambiente, instalar a dependencia de desenvolvimento 
+
+npm i dotenv -D
+
+instalar a biblioteca do axios para requisições
+
+npm i axios
+
+adicionar o pacote jwt
+
+npm i @fastify/jwt
+
+adicionar o host '0.0.0.0' para a autenticação do mobile
 ----------------------------WEB--------------------------------------------------
 Criando o projeto react com framework next
 npx create-next-app@latest
@@ -73,6 +87,16 @@ alterar o arquivo tailwind.config.json
 instalar o pacote de icones lucide-react
 
 npm i lucide-react
+
+AULA 03
+
+Instalar o axios no front-endereços
+
+npm i axios
+
+Instalar o decodificador de JWT
+
+npm i jwt-decode
 -----------------------------------------------------MOBILE----------------------
 
 Configuração do projeto Mobile
@@ -159,5 +183,22 @@ para estilizar componentes criados a partir de svg por exemplo, é necessário
 criar uma const utilizando a função styled do nativewind que recebe o componente e cria um novo que pode receber estilizações
 
 
+AULA 03 ----------------------------------------------------
 
+Instalar as bibliotecas de autenticação do expo
 
+npx expo install expo-auth-session expo-crypto
+
+adicionar a configuração de scheme no app.json
+
+adicionar o axios
+
+npm i axios
+
+instalar o secure store do expo
+
+npx expo install expo-secure-store
+
+instalar a biblioteca de rotas do expo
+
+npx expo install expo-router react-native-safe-area-context react-native-screens expo-linking expo-constants expo-status-bar
