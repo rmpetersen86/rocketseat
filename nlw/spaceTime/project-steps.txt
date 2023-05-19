@@ -63,6 +63,22 @@ adicionar o pacote jwt
 npm i @fastify/jwt
 
 adicionar o host '0.0.0.0' para a autenticação do mobile
+
+Aula 04
+
+Plugin para upload multipart
+
+npm i @fastify/multipart
+
+importar o modulo interno randonUUID
+
+import { randomUUID } from 'node:crypto'
+
+Armazenamentos: Amazon S3 Google Cloud Storage, Cloudflare R2
+
+modulo de teste para disponibilizar arquivos do backend
+
+npm i @fastify/static
 ----------------------------WEB--------------------------------------------------
 Criando o projeto react com framework next
 npx create-next-app@latest
@@ -97,6 +113,18 @@ npm i axios
 Instalar o decodificador de JWT
 
 npm i jwt-decode
+
+Aula 04----------
+Instalar o plugin de formularios do tailwindcss
+
+npm install -D @tailwindcss/forms
+
+e adicionar o plugin no arquivo de configuração do tailwind
+
+require('@tailwindcss/forms')
+
+middleware de autenticação:
+limitar acesso a rotas e ender
 -----------------------------------------------------MOBILE----------------------
 
 Configuração do projeto Mobile
