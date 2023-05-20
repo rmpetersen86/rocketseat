@@ -11,13 +11,19 @@
     </thead>
     <tbody>        
     <tr>
-            <td>Ignite/Projeto 02</td>
+            <td>NLW #12</td>
+            <td><a href="./nlw/nlw-spaceTime">SpaceTime</a></td>
+            <td>15 a 21 de Maio, 2023</td>
+            <td align="center"><img src="./nlw/nlw-spaceTime/.github/webPreview.jpg" width="70%"/></td>
+        </tr>
+    <tr>
+            <td>Ignite</td>
             <td><a href="./ignite/igniteTeams">igniteTeams</a></td>
             <td>27/03/23</td>
             <td align="center"><img src="./ignite/igniteTeams/.github/preview.jpg" width="70%"/></td>
         </tr>
     <tr>
-            <td>Ignite/Desafio</td>
+            <td>Ignite</td>
             <td><a href="./ignite/ToDo-List">ToDo-List</a></td>
             <td>15/03/23</td>
             <td align="center"><img src="./ignite/ToDo-List/.github/preview.jpg" width="70%"/></td>
@@ -42,18 +48,18 @@
             <td align="center"><img src="./labs/ignite-lab-design-system/.github/preview.png" width="70%"/></td>            
         </tr>
         <tr>
-            <td>NLW #10 - Copa</td>
-            <td><a href="./nlw/nlw-copa">Next Level Week - Edição Copa</a></td>
-            <td>17/10/22</td>
-            <td align="center"><img src="./nlw/nlw-copa/.github/preview.png" width="40%"
-            /></td>
-        </tr>
-        <tr>
-            <td>NLW #11 - Setup</td>
+            <td>NLW #11</td>
             <td><a href="./nlw/nlwSetup">Next Level Week - Edição Setup</a></td>
             <td>23/01/22</td>
             <td align="center"><img src="./nlw/nlwSetup/.github/preview.jpg" width="40%"/></td>
         </tr>
+        <tr>
+            <td>NLW #10</td>
+            <td><a href="./nlw/nlw-copa">Next Level Week - Edição Copa</a></td>
+            <td>17/10/22</td>
+            <td align="center"><img src="./nlw/nlw-copa/.github/preview.png" width="40%"
+            /></td>
+        </tr>        
         <tr>
             <td>Youtube</td>
             <td><a href="./youtube/copa-card">Crie sua figurinha da copa </a></td>
@@ -72,6 +78,39 @@
             <td>27/10/22</td>
             <td align="center"><img src="./youtube/mysticker/.github/preview.png" width="40%"/></td>
         </tr>
+    </tbody>
+</table>
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+            <a href="./ignite">
+            Projetos - Bootcamp IGNITE
+            </a>
+            </td>
+        </tr>  
+        <tr>
+            <td>
+            <a href="./nlw">
+            Projetos - Next Level Week
+            </a>
+            </td>
+        </tr>  
+        <tr>
+            <td>
+            <a href="./labs">
+            Projetos - LABS
+            </a>
+            </td>
+        </tr>  
+        <tr>
+            <td>
+            <a href="./youtube">
+            Projetos - Aulas Youtube
+            </a>
+            </td>
+        </tr>  
     </tbody>
 </table>
 
