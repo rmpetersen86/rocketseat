@@ -24,9 +24,9 @@ export const FormInput = styled(TextInput)<Props>`
     color: ${theme.COLORS.GRAY_1};
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.MD}px;
-    border: 1px solid ${theme.COLORS.GRAY_5};
+    border: 1px solid ${theme.COLORS.GRAY_5};    
   `}
-  height: ${({ type }) => (type === "INPUT" ? 48 : 142)}px;
+  height: ${({ type }) => (type === "INPUT" ? 48 : 142)}px;  
   padding: 14px;
   border-radius: 6px;
   min-width: 160px;

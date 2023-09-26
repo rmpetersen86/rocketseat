@@ -3,7 +3,7 @@ import { Percent } from "@components/Percent";
 import { SectionHeader } from "@components/SectionHeader";
 import { SectionItem } from "@components/SectionItem";
 import { ForkKnife } from "phosphor-react-native";
-import { Image, SectionList, Text, View } from "react-native";
+import { Alert, Image, SectionList } from "react-native";
 import {
   AppIcon,
   Avatar,
@@ -12,60 +12,48 @@ import {
   Heading,
   IconTitle,
 } from "./styles";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { useCallback, useState } from "react";
+import { daysGetAll } from "@storage/day/dayGetAll";
+import { mealGetByDay } from "@storage/meal/mealGetByDay";
+import { mealGetAll } from "@storage/meal/mealGetAll";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function Home() {
-  const DATA = [
-    {
-      title: "29.03.2023",
-      data: [
-        { hour: "07:00", description: "X-tudo", onDiet: false },
-        { hour: "12:30", description: "Salada do chef", onDiet: true },
-        { hour: "15:30", description: "whey com leite", onDiet: true },
-        {
-          hour: "17:30",
-          description: "Pastel com caldo de cana",
-          onDiet: false,
-        },
-        {
-          hour: "20:30",
-          description: "Ovo cozido com queijo branco e tabule",
-          onDiet: true,
-        },
-      ],
-    },
-    {
-      title: "28.03.2023",
-      data: [
-        { hour: "07:30", description: "Misto Quente", onDiet: false },
-        {
-          hour: "12:00",
-          description: "Escondidinho com arroz e feijão",
-          onDiet: false,
-        },
-        { hour: "13:00", description: "Banana", onDiet: true },
-      ],
-    },
-    {
-      title: "27.03.2023",
-      data: [
-        {
-          hour: "07:00",
-          description: "2 fatias de pão integral com queijo minas",
-          onDiet: true,
-        },
-        {
-          hour: "12:00",
-          description: "Frango com batata doce e arroz integral",
-          onDiet: true,
-        },
-        {
-          hour: "15:00",
-          description: "Banana com granola e mel",
-          onDiet: true,
-        },
-      ],
-    },
-  ];
+  const [isLoading, setIsLoading] = useState(true);
+  const [days, setDays] = useState<string[]>([])
+  const navigation = useNavigation();
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchMeals()
+    },[])
+  )
+
+  async function fetchMeals(){
+    setIsLoading(true)
+    try{
+      const data = await daysGetAll()
+      const meals = await mealGetAll()
+      //await AsyncStorage.clear()
+      const keys = await AsyncStorage.getAllKeys();
+      const result = await AsyncStorage.multiGet(keys);
+      console.log(result)
+      //return result.map(req => JSON.parse(req)).forEach(console.log);
+      console.log(data)
+      console.log(meals)
+      setDays(data)
+    }catch(error){
+      Alert.alert("Refeições","Não foi possível carregar as refeições!")
+    }finally{
+      setIsLoading(false)
+    }
+  }
+
+  function handleNewMeal() {
+    navigation.navigate("newMeal")
+  }
+  
   return (
     <Container>
       <Heading>
@@ -82,28 +70,28 @@ export function Home() {
       </Heading>
       <Percent total={62.5} />
       <ContentTitle>Refeições</ContentTitle>
-      <Button title="Nova refeição" iconName="Plus" />
-      <SectionList
-        sections={DATA}
-        keyExtractor={(item, index) => item.hour + index}
+      <Button title="Nova refeição" iconName="Plus" onPress={handleNewMeal}/>
+      {/* <SectionList
+        sections={days as any}
+        keyExtractor={(item, index) => item + index}
         renderItem={({ item }) => (
           <SectionItem
             hour={item.hour}
-            description={item.description}
+            description={item.name}
             isOnDiet={item.onDiet}
           />
         )}
-        renderSectionHeader={({ section: { title } }) => (
-          <SectionHeader title={title} />
+        renderSectionHeader={({ section: { item } }) => (
+          <SectionHeader title={item} />
         )}
         stickySectionHeadersEnabled={false}
         showsVerticalScrollIndicator={false}
         fadingEdgeLength={250}
         contentContainerStyle={[
           { paddingBottom: 100 },
-          DATA.length === 0 && { flex: 1 },
+          days.length === 0 && { flex: 1 },
         ]}
-      />
+      /> */}
     </Container>
   );
 }

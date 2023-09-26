@@ -8,6 +8,7 @@ export const Content = styled.View`
   margin-top: -28px;
   border-radius: 20px;
   background-color: ${({ theme }) => theme.COLORS.GRAY_7};
+  padding-bottom: 200px;
 `;
 
 export const Form = styled.View`

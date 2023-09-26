@@ -24,7 +24,8 @@ export const Title = styled.Text`
 export const BackButton = styled.TouchableOpacity`
   position: absolute;
   top: 54px;
-  left: 24px;
+  left: 34px;
+  z-index: 1;
 `;
 
 export const BackIcon = styled(ArrowLeft).attrs(({ theme }) => ({
