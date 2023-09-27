@@ -66,6 +66,7 @@ export function Players() {
     setIsLoading(true);
     try {
       const playersByTeam = await playersGetByGroupAndTeam(group, team);
+      console.log(playersByTeam)
       setPlayers(playersByTeam);
     } catch (error) {
       Alert.alert(

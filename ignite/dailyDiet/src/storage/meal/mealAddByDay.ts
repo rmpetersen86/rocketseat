@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { DAY_COLLETCION, MEAL_COLLECTION } from "@storage/storageConfig";
+import { MEAL_COLLECTION } from "@storage/storageConfig";
 
 import { AppError } from "@utils/AppError";
 import { MealStorageDTO } from "./MealStorageDTO";
@@ -7,11 +7,12 @@ import { mealGetByDay } from "./mealGetByDay";
 import { dayCreate } from "@storage/day/dayCreate";
 
 
-export async function mealCreateByDay(
+export async function mealAddByDay(
     newMeal: MealStorageDTO,
     day: string
     ) {
-    try{
+    try{        
+        await dayCreate(day)
         const storedMeals = await mealGetByDay(day);
 
         const mealAlreadyExists = storedMeals.filter(
@@ -22,8 +23,7 @@ export async function mealCreateByDay(
             throw new AppError("Esta refeição já existe neste horário");
         }
 
-        const storage = JSON.stringify([...storedMeals, newMeal]);
-        await dayCreate(day)
+        const storage = JSON.stringify([...storedMeals, newMeal]);        
         await AsyncStorage.setItem(`${MEAL_COLLECTION}-${day}`, storage)        
     }catch(error){
         throw error

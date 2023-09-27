@@ -8,12 +8,16 @@ import { useState } from "react";
 import { Button } from "@components/Button";
 import { AppError } from "@utils/AppError";
 import { useNavigation } from "@react-navigation/native";
-import { mealCreateByDay } from "@storage/meal/mealCreateByDay";
+import { mealAddByDay } from "@storage/meal/mealAddByDay";
+import dayjs from 'dayjs'
+import ptBr from 'dayjs/locale/pt-br'
+
+dayjs.locale(ptBr)
 
 export function NewMeal() {
   const [mealName, setMealName] = useState("")
   const [description, setDescription] = useState("")
-  const [date, setDate] = useState("")
+  const [date, setDate] = useState(dayjs(new Date(Date.now())).format('DD/MM/YYYY'))
   const [hour, setHour] = useState("")
   const [onDietOption, setOnDietOption] = useState("");
 
@@ -24,7 +28,7 @@ export function NewMeal() {
         description.trim().length === 0 ||
         date.trim().length === 0 ||
         hour.trim().length === 0 ||
-        onDietOption.trim().length === 0
+        onDietOption.trim().length === 0         
     ) {
       return Alert.alert('Nova Refeição', 'Informe os dados da refeição!')
     }
@@ -33,11 +37,11 @@ export function NewMeal() {
       name: mealName,
       description,      
       hour,
-      onDiet: onDietOption,      
+      onDiet: onDietOption === 'Sim' ? true : false,      
     }
 
     try{
-      await mealCreateByDay(newMeal, date)
+      await mealAddByDay(newMeal, date)
     }catch(error){
       if(error instanceof AppError) {
         Alert.alert("Nova Refeição", error.message)
@@ -71,7 +75,10 @@ export function NewMeal() {
               gap: 24,
             }}
           >
-            <Input label="Data" onChangeText={setDate} />
+            <Input label="Data" 
+            value={date}
+            onChangeText={setDate} 
+            />
             <Input label="Hora" onChangeText={setHour}/>
           </View>
           <Label>Está dentro da dieta?</Label>

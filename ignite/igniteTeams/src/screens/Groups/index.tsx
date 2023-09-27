@@ -22,8 +22,8 @@ export function Groups() {
   async function fetchGroups() {
     setIsLoading(true);
     try {
-      const data = await groupsGetAll();
-      setGroups(data);
+      const data = await groupsGetAll();      
+      setGroups(data);      
     } catch (error) {
       Alert.alert("Turmas!", "Não foi possível carregar as turmas");
     } finally {
@@ -59,7 +59,7 @@ export function Groups() {
             groups.length === 0 && { flex: 1 },
           ]}
           ListEmptyComponent={() => (
-            <ListEmpty message="Que tal cadastras a primeira turma?" />
+            <ListEmpty message="Que tal cadastrar a primeira turma?" />
           )}
           showsVerticalScrollIndicator={false}
         />
