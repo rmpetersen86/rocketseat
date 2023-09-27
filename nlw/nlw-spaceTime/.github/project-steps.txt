@@ -1,4 +1,6 @@
 BACKEND -------------------------------------------------------------------------------------
+Criar um diretório para armazenar o Projeto Backend e acessar o diretório criado;
+
 npm init -y = inicia o projeto javascript
 
 npm i typescript -D = typescript como dependencia de desenvolvimento
@@ -8,12 +10,20 @@ npx executa binarios que são instalados pelas bibliotecas
 
 npx tsc --init = inicializa o arquivo de configuração do typescript (Alterar o target para es2020)
 
-criar o diretório src e o arquivo server.tsc
+-------
+
+criar o diretório src e o arquivo server.ts
+
+------
 
 npm i tsx -D = automatiza o processo de converter o código e executa o projeto
 
 
-adicionar o script "dev":"tsx watch src/server.ts"
+adicionar os scripts: 
+
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup ./src",
+    "start": "node dist/server.js"
 
 npm i fastify = framework
 
@@ -29,7 +39,9 @@ npx prisma init --datasource-provider SQLite
 inicializar/atualizar as tabelas do banco
 
 npx prisma migrate dev
-
+ou
+npx prisma db push (no caso do mongodb)
+------------------------------------
 visualizar o banco de dados
 
 npx prisma studio
