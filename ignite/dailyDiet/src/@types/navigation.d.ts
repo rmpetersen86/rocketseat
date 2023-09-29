@@ -1,11 +1,16 @@
+import { mealsOnDay } from "@screens/Home"
+
 export declare global {
     namespace ReactNavigation {
       interface RootParamList {
         home: undefined
         newMeal: undefined
-        /* players: {
-          group: string
-        } */
+        statistics: {
+          totalMeals: number
+          mealsOnDiet: number
+          mealsPercent: number
+          mealStrike: number
+        }
       }
     }
   }

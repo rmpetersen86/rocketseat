@@ -2,26 +2,38 @@ import { DataInfo } from "@components/DataInfo";
 import { Percent } from "@components/Percent";
 import { View } from "react-native";
 import { Container, Content, ContentHeading } from "./styles";
+import { useRoute } from "@react-navigation/native";
+
+type RouteParams = {
+  totalMeals: number
+  mealsOnDiet: number
+  mealsPercent: number
+  mealStrike: number
+}
 
 export function Statistics() {
+  
+  const route = useRoute()
+  const {totalMeals, mealsOnDiet, mealsPercent, mealStrike} = route.params as RouteParams  
+
   return (
     <Container>
-      <Percent total={62.5} type="HEADER" />
+      <Percent total={parseFloat(mealsPercent.toFixed(2))} type="HEADER" />
       <Content>
         <ContentHeading>Estatísticas gerais</ContentHeading>
         <DataInfo
-          dataNumber={18}
+          dataNumber={mealStrike}
           caption={"melhor sequência de pratos dentro da dieta"}
         />
-        <DataInfo dataNumber={60} caption={"refeições registradas"} />
+        <DataInfo dataNumber={totalMeals} caption={"refeições registradas"} />
         <View style={{ width: 167, flexDirection: "row", gap: 12 }}>
           <DataInfo
-            dataNumber={18}
+            dataNumber={mealsOnDiet}
             type={"POSITIVE"}
             caption={"refeições dentro da dieta"}
           />
           <DataInfo
-            dataNumber={6}
+            dataNumber={(totalMeals - mealsOnDiet)}
             type={"NEGATIVE"}
             caption={"refeições fora da dieta"}
           />

@@ -5,14 +5,13 @@ export type PercentTypeStyleProps = "WIDGET" | "HEADER";
 
 type Props = {
   type: PercentTypeStyleProps;
+  positive?: boolean
 };
 
 export const Container = styled.View<Props>`
   width: 100%;
-
   height: ${({ type }) => (type === "WIDGET" ? 100 : 200)}px;
-
-  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
+  background-color: ${({ theme, positive }) => positive ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
   border-radius: 8px;
   padding: 20px 16px;
   align-items: center;
@@ -52,10 +51,10 @@ export const BackButton = styled.TouchableOpacity`
 
 export const ForwardIcon = styled(ArrowUpRight).attrs(({ theme }) => ({
   size: 24,
-  color: theme.COLORS.GREEN_DARK,
+  //color: theme.COLORS.GREEN_DARK,
 }))``;
 
 export const BackIcon = styled(ArrowLeft).attrs(({ theme }) => ({
   size: 24,
-  color: theme.COLORS.GREEN_DARK,
+  //color: theme.COLORS.GREEN_DARK,
 }))``;
