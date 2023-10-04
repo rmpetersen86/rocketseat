@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components/native"
 import { Circle } from "phosphor-react-native"
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   width: 100%;
   max-height: 49px;
   min-height: 49px;

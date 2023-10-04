@@ -14,7 +14,7 @@ import { useTheme } from "styled-components";
 type Props = {
   type?: PercentTypeStyleProps;
   total: number;
-  forwardButtonAction?: () => void
+  forwardButtonAction?: () => void  
 };
 
 export function Percent({ total, type = "WIDGET", forwardButtonAction = () => {} }: Props) {
@@ -36,7 +36,7 @@ export function Percent({ total, type = "WIDGET", forwardButtonAction = () => {}
           <BackIcon color={total >= 50 ? COLORS.GREEN_DARK : COLORS.RED_DARK}/>
         </BackButton>
       )}
-      <Percentage>{total}%</Percentage>
+      <Percentage>{total.toFixed(2)}%</Percentage>
       <Subtitle>das refeições dentro da dieta</Subtitle>
     </Container>
   );

@@ -13,6 +13,7 @@ export const Content = styled.View`
   background-color: ${({ theme }) => theme.COLORS.GRAY_7};
   border-radius: 20px;
   gap: 12px;
+  justify-content: center;
 `;
 
 export const ContentHeading = styled.Text`

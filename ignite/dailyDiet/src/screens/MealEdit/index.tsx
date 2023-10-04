@@ -7,33 +7,41 @@ import { Filter } from "@components/Filter";
 import { useState } from "react";
 import { Button } from "@components/Button";
 import { AppError } from "@utils/AppError";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { mealAddByDay } from "@storage/meal/mealAddByDay";
 import greatJob from '../../assets/great.jpg'
 import keepGoing from '../../assets/keepTrying.jpg'
 import dayjs from 'dayjs'
 import ptBr from 'dayjs/locale/pt-br'
+import { MealStorageDTO } from "@storage/meal/MealStorageDTO";
 
 dayjs.locale(ptBr)
 
-export function NewMeal() {
-  const [mealName, setMealName] = useState("")
-  const [description, setDescription] = useState("")
-  const [date, setDate] = useState(dayjs(new Date(Date.now())).format('DD/MM/YYYY'))
-  const [hour, setHour] = useState("")
-  const [onDietOption, setOnDietOption] = useState("");
-  const [mealOnDiet, setMealOnDiet] = useState("")  
+type RouteParams = {
+  day: string
+  meal: MealStorageDTO
+}
+
+export function MealEdit() {    
+  const route = useRoute()
+  const {day, meal} = route.params as RouteParams
+  const [mealName, setMealName] = useState(meal.name)
+  const [description, setDescription] = useState(meal.description)
+  const [date, setDate] = useState(day)
+  const [hour, setHour] = useState(meal.hour)
+  const [onDietOption, setOnDietOption] = useState(meal.onDiet ? "Sim" : "Não");
+  const [mealOnDiet, setMealOnDiet] = useState("")
 
   const navigation = useNavigation();
 
-  async function handleAddMeal() {
+  async function handleUpdateMeal() {
     if(mealName.trim().length === 0 ||
         description.trim().length === 0 ||
         date.trim().length === 0 ||
         hour.trim().length === 0 ||
         onDietOption.trim().length === 0         
     ) {
-      return Alert.alert('Nova Refeição', 'Informe os dados da refeição!')
+      return Alert.alert('Alterar Refeição', 'Informe os dados da refeição!')
     }
 
     const newMeal = {
@@ -44,7 +52,7 @@ export function NewMeal() {
     }
 
     try{
-      await mealAddByDay(newMeal, date)
+      //await mealAddByDay(newMeal, date)
     }catch(error){
       if(error instanceof AppError) {
         Alert.alert("Nova Refeição", error.message)
@@ -60,11 +68,12 @@ export function NewMeal() {
     <Container>
       {mealOnDiet === "" ?  
       <>
-      <Header title="Nova refeição" />
+      <Header title="Editar refeição" />
       <Content>
         <Form>
           <Input 
             label="Nome"
+            value={mealName}
             onChangeText={setMealName}
           />
           <Input
@@ -73,6 +82,7 @@ export function NewMeal() {
             multiline
             textAlignVertical={"top"}
             onChangeText={setDescription}
+            value={description}
           />
           <View
             style={{
@@ -82,9 +92,13 @@ export function NewMeal() {
           >
             <Input label="Data" 
             value={date}
-            onChangeText={setDate} 
+            onChangeText={setDate}            
             />
-            <Input label="Hora" onChangeText={setHour}/>
+            <Input 
+              label="Hora" 
+              onChangeText={setHour}
+              value={hour}
+            />
           </View>
           <Label>Está dentro da dieta?</Label>
           <View
@@ -106,8 +120,8 @@ export function NewMeal() {
           </View>
         </Form>
         <Button 
-        title="Cadastrar refeição"
-        onPress={handleAddMeal}
+        title="Salvar alterações"
+        onPress={handleUpdateMeal}
         />
       </Content>
       </>

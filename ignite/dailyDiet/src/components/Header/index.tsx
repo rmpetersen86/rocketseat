@@ -4,9 +4,10 @@ import { useNavigation } from "@react-navigation/native"
 
 type Props = {
   title?: string;
+  type?: "Default" | "Positive" | "Negative";
 };
 
-export function Header({ title }: Props) {
+export function Header({ title, type = "Default" }: Props) {
   const navigation = useNavigation()
   
   function handleGoback() {
@@ -14,7 +15,7 @@ export function Header({ title }: Props) {
   }
   
   return (
-    <Container>
+    <Container type={type}>
       <BackButton onPress={handleGoback}>
         <BackIcon />
       </BackButton>      

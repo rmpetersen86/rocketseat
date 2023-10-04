@@ -6,19 +6,18 @@ import { useRoute } from "@react-navigation/native";
 
 type RouteParams = {
   totalMeals: number
-  mealsOnDiet: number
-  mealsPercent: number
+  mealsOnDiet: number  
   mealStrike: number
 }
 
 export function Statistics() {
   
   const route = useRoute()
-  const {totalMeals, mealsOnDiet, mealsPercent, mealStrike} = route.params as RouteParams  
+  const {totalMeals, mealsOnDiet, mealStrike} = route.params as RouteParams  
 
   return (
     <Container>
-      <Percent total={parseFloat(mealsPercent.toFixed(2))} type="HEADER" />
+      <Percent total={(mealsOnDiet/totalMeals)*100} type="HEADER" />
       <Content>
         <ContentHeading>Estatísticas gerais</ContentHeading>
         <DataInfo

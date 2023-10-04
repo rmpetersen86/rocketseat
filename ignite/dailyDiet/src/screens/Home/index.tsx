@@ -3,7 +3,7 @@ import { Percent } from "@components/Percent";
 import { SectionHeader } from "@components/SectionHeader";
 import { SectionItem } from "@components/SectionItem";
 import { ForkKnife } from "phosphor-react-native";
-import { Alert, Image, SectionList } from "react-native";
+import { Alert, Image, SectionList} from "react-native";
 import {
   AppIcon,
   Avatar,
@@ -25,12 +25,11 @@ export type mealsOnDay = {
 }
 
 export function Home() {
-  const [isLoading, setIsLoading] = useState(true);  
+  const [isLoading, setIsLoading] = useState(true);
   const [mealsByDay, setMealsByDay] = useState<mealsOnDay[]>([])
-  const [totalMeals, setTotalMeals] = useState(0)
-  const [mealsOnDiet, setMealsOnDiet] = useState(0)
-  const [mealsPercent, setMealsPercent] = useState(0)
-  const [mealStrike, setMealStrike] = useState(0)
+  const [totalMeals, setTotalMeals] = useState<number>(0)
+  const [mealsOnDiet, setMealsOnDiet] = useState<number>(0)  
+  const [mealStrike, setMealStrike] = useState<number>(0)
   const navigation = useNavigation();
 
   useFocusEffect(
@@ -38,21 +37,20 @@ export function Home() {
       setIsLoading(true)
       fetchMeals()      
     },[])
-  )  
+  )
 
   async function fetchMeals(){
     setIsLoading(true)
     setMealsByDay([])
       setTotalMeals(0)
-      setMealsOnDiet(0)
-      setMealsPercent(0)
-      setMealStrike(0)   
-    try{      
-      const days = await daysGetAll()    
-      days.map(day => {                
-        fetchMealsByDay(day)
-      })
-      calcMeals()
+      setMealsOnDiet(0)      
+      setMealStrike(0)
+      console.log(mealsByDay) 
+    try{     
+        const days = await daysGetAll()        
+        days.map(day => {
+            fetchMealsByDay(day)
+        })                
     }catch(error){
       Alert.alert("Refeições","Não foi possível carregar as refeições!")
     }finally{
@@ -66,23 +64,25 @@ export function Home() {
     setTotalMeals((totalMeals) => totalMeals + meals.length)
     meals.map((meal) => (      
       meal.onDiet && setMealsOnDiet((mealsOnDiet) => mealsOnDiet + 1),
-      (onDiet += 1)
+      (onDiet = onDiet +1)
       ))
     const mealsOnDay = {title: day, data: meals}
-    setMealsByDay(oldMeals => [...oldMeals, mealsOnDay].sort(((a, b) => a.title > b.title ? -1 : 1)))  
-    setMealStrike((mealStrike) => onDiet >= mealStrike ? onDiet : mealStrike) 
-  }
-
-  function calcMeals() {    
-    setMealsPercent((mealsOnDiet/totalMeals)*100)    
-  }
+    setMealsByDay(oldMeals => [...oldMeals, mealsOnDay].sort(((a, b) => 
+    a.title.split("/")[1] > b.title.split("/")[1] ? ((a.title > b.title) ? 1 : -1 ): 1
+    )))      
+    setMealStrike((mealStrike) => onDiet >= mealStrike ? onDiet : mealStrike)
+  }  
   
   function handleNewMeal() {
     navigation.navigate("newMeal")
   }
 
   function handleStatistics() {
-    navigation.navigate("statistics", {totalMeals, mealsOnDiet, mealsPercent, mealStrike})
+    navigation.navigate("statistics", {totalMeals, mealsOnDiet, mealStrike})
+  }
+
+  function handleMealDetail(day: string, meal: MealStorageDTO) {    
+    navigation.navigate("mealDetail", {day, meal})
   }
   
   return (
@@ -101,17 +101,19 @@ export function Home() {
       </Heading>
       {isLoading ? <Loading /> :
       <>      
-      <Percent total={parseFloat(mealsPercent.toFixed(2))} forwardButtonAction={() => handleStatistics()}/>   
+      <Percent total={(mealsOnDiet/totalMeals)*100} forwardButtonAction={() => handleStatistics()}/>
+      {/* <Text>Refeições: {totalMeals} Refeições na dieta: {mealsOnDiet} Porcentagem: {mealsPercent}</Text> */}
       <ContentTitle>Refeições</ContentTitle>
       <Button title="Nova refeição" iconName="Plus" onPress={handleNewMeal}/>
       <SectionList      
         sections={mealsByDay}
         keyExtractor={(item, index) => item.name + index}        
-        renderItem={({ item }) => (
+        renderItem={({ item, section }) => (
           <SectionItem
             hour={item.hour}
             description={item.name}
             isOnDiet={item.onDiet}
+            onPress={() => handleMealDetail(section.title, {description: item.description, hour: item.hour, name: item.name, onDiet: item.onDiet})}
           />
         )}
         renderSectionHeader={({ section: { title } }) => (

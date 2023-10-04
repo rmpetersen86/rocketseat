@@ -1,8 +1,5 @@
+import { Circle } from "phosphor-react-native";
 import styled, { css } from "styled-components/native";
-
-type Props = {
-  positive?: boolean
-}
 
 export const Container = styled.View`
   flex: 1;
@@ -18,6 +15,7 @@ export const Content = styled.View`
 export const Form = styled.View`
   gap: 24px;
   margin-bottom: 148px;
+  flex: 1;
 `;
 
 export const Label = styled.Text`
@@ -27,14 +25,6 @@ export const Label = styled.Text`
     color: ${theme.COLORS.GRAY_2};
   `}
   text-align: left;
-`;
-
-export const Banner = styled.View`    
-  display: flex;
-  flex: 1;  
-  align-items: center;
-  justify-content: center;
-  background-color: ${({ theme }) => theme.COLORS.WHITE};  
 `;
 
 export const BannerHeading = styled.Text`
@@ -50,15 +40,18 @@ export const BoldText = styled.Text`
   `}
 `;
 
-export const BannerImage = styled.Image`  
-  margin: 20px;
-  height: 300px;
-`;
+export const OnDietIndicator = styled.View`
+  flex-direction: row;
+  gap: 8px;  
+  background-color: ${({ theme }) => theme.COLORS.GRAY_6};
+  border-radius: 50px;
+  height: 40px;
+  width: 180px;
+  align-items: center;
+  justify-content: center;
+`
 
-export const BannerHeader = styled.Text<Props>`
- ${({ theme, positive}) => css`
- font-size: ${theme.FONT_SIZE.XXL}px;
- font-family: ${theme.FONT_FAMILY.BOLD};
- color: ${positive ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK}
- `} 
-`;
+export const OnDiet = styled(Circle).attrs(() => ({
+  size: 14,
+  weight: "fill",
+}))``;

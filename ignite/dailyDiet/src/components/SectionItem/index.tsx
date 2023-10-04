@@ -5,12 +5,13 @@ type Props = {
   hour: string
   description: string
   isOnDiet: boolean
+  onPress: () => void
 }
 
-export function SectionItem({ hour, description, isOnDiet = false }: Props) {
+export function SectionItem({ hour, description, isOnDiet = false, onPress = () => {} }: Props) {
   const { COLORS } = useTheme()
   return (
-    <Container>
+    <Container onPress={() => onPress()}>
       <Hour>{hour}</Hour>
       <Separator />
       <Description numberOfLines={1}>{description}</Description>
