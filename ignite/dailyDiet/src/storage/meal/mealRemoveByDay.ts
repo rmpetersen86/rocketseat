@@ -3,12 +3,10 @@ import { MEAL_COLLECTION } from "@storage/storageConfig";
 import { mealGetByDay } from "./mealGetByDay"; 
 import { MealStorageDTO } from "./MealStorageDTO";
 
-export async function mealRemoveByDay(meal: MealStorageDTO, day: string) {
-  console.log(meal, day)
+export async function mealRemoveByDay(meal: MealStorageDTO, day: string) {  
   try {
-    const storage = await mealGetByDay(day);
-    
-    const filtered = storage.filter((mealToRemove) => ((mealToRemove.name+mealToRemove.hour) !== (meal.name+meal.hour)));
+    const storage = await mealGetByDay(day);    
+    const filtered = storage.filter((mtr) => ((mtr.name+mtr.hour+mtr.description) !== (meal.name+meal.hour+meal.description)));
     
     const meals = JSON.stringify(filtered);
 

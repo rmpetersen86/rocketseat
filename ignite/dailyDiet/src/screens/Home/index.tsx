@@ -28,28 +28,43 @@ export function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [mealsByDay, setMealsByDay] = useState<mealsOnDay[]>([])
   const [totalMeals, setTotalMeals] = useState<number>(0)
-  const [mealsOnDiet, setMealsOnDiet] = useState<number>(0)  
+  const [mealsOnDiet, setMealsOnDiet] = useState<number>(0)    
   const [mealStrike, setMealStrike] = useState<number>(0)
   const navigation = useNavigation();
 
   useFocusEffect(
     useCallback(() => {
       setIsLoading(true)
-      fetchMeals()      
+      fetchMeals()
     },[])
   )
 
-  async function fetchMeals(){
-    setIsLoading(true)
+  async function fetchMeals(){    
     setMealsByDay([])
       setTotalMeals(0)
       setMealsOnDiet(0)      
-      setMealStrike(0)
-      console.log(mealsByDay) 
+      setMealStrike(0)      
     try{     
-        const days = await daysGetAll()        
-        days.map(day => {
-            fetchMealsByDay(day)
+        const days = await daysGetAll()
+        let mealsOnDietStrike = 0
+        days.map(async day => {
+          const meals = await mealGetByDay(day)          
+          setTotalMeals((totalMeals) => totalMeals + meals.length)
+          meals.map((meal) => (      
+            meal.onDiet ? 
+              (
+              setMealsOnDiet((mealsOnDiet) => mealsOnDiet + 1),
+              mealsOnDietStrike = mealsOnDietStrike + 1
+              )
+              :
+              (
+                setMealStrike((mealStrike) => mealsOnDietStrike > mealStrike ? mealsOnDietStrike : mealStrike),
+                mealsOnDietStrike = 0
+              )              
+            ))
+          const mealsOnDay = {title: day, data: meals}
+          setMealsByDay(oldMeals => [...oldMeals, mealsOnDay])          
+          
         })                
     }catch(error){
       Alert.alert("Refeições","Não foi possível carregar as refeições!")
@@ -58,7 +73,7 @@ export function Home() {
     }
   }  
 
-  async function fetchMealsByDay(day: string){
+  /* async function fetchMealsByDay(day: string){
     const meals = await mealGetByDay(day)
     let onDiet = 0
     setTotalMeals((totalMeals) => totalMeals + meals.length)
@@ -71,7 +86,7 @@ export function Home() {
     a.title.split("/")[1] > b.title.split("/")[1] ? ((a.title > b.title) ? 1 : -1 ): 1
     )))      
     setMealStrike((mealStrike) => onDiet >= mealStrike ? onDiet : mealStrike)
-  }  
+  } */  
   
   function handleNewMeal() {
     navigation.navigate("newMeal")

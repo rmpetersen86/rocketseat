@@ -8,12 +8,12 @@ import { useState } from "react";
 import { Button } from "@components/Button";
 import { AppError } from "@utils/AppError";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { mealAddByDay } from "@storage/meal/mealAddByDay";
 import greatJob from '../../assets/great.jpg'
 import keepGoing from '../../assets/keepTrying.jpg'
 import dayjs from 'dayjs'
 import ptBr from 'dayjs/locale/pt-br'
 import { MealStorageDTO } from "@storage/meal/MealStorageDTO";
+import { mealUpdate } from "@storage/meal/mealUpdate";
 
 dayjs.locale(ptBr)
 
@@ -52,7 +52,7 @@ export function MealEdit() {
     }
 
     try{
-      //await mealAddByDay(newMeal, date)
+      await mealUpdate(newMeal, meal, date)
     }catch(error){
       if(error instanceof AppError) {
         Alert.alert("Nova Refeição", error.message)
