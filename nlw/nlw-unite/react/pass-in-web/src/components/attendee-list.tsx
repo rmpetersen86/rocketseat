@@ -22,8 +22,22 @@ interface Attendee {
 
 export function AttendeeList() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [search, setSearch] = useState('')
-  const [page, setPage] = useState(1)  
+  const [search, setSearch] = useState(() => {
+    const url = new URL(window.location.toString())
+    if (url.searchParams.has('search')){
+      return url.searchParams.get('search') ?? ''
+    }
+    return ''
+  })
+  
+  const [page, setPage] = useState(() => {
+    const url = new URL(window.location.toString())
+    if (url.searchParams.has('page')){
+      return Number(url.searchParams.get('page'))
+    }
+    return 1
+  })  
+
   const [total, setTotal] = useState(0)
   const [attendees, setAttendees] = useState<Attendee[]>([])
 
@@ -43,26 +57,41 @@ export function AttendeeList() {
     })
   },[page, search])
 
-  function goToNextPage(){
-    setPage(page + 1)
+  function setCurrentSearch(search: string){
+    const url = new URL(window.location.toString())
+    url.searchParams.set('search', search)
+    window.history.pushState({}, "", url)
+    setSearch(search)
+    setCurrentPage(1) 
+  }
+
+  function setCurrentPage(page: number) {
+    const url = new URL(window.location.toString())
+    url.searchParams.set('page', String(page))
+    window.history.pushState({}, "", url)
+    setPage(page)
+  }
+
+  function goToNextPage(){    
+    setCurrentPage(page + 1)
   }
 
   function goToPreviousPage(){
-    setPage(page - 1)
+    setCurrentPage(page - 1)
   }
 
   function goToLastPage(){
-    setPage(totalPages)
+    setCurrentPage(totalPages)
   }
 
   function goToFirstPage(){
-    setPage(1)
+    setCurrentPage(1)
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function onSearchInputChanged(event: ChangeEvent<HTMLInputElement>){
-    setSearch(event.target.value)
-    setPage(1)
+    setCurrentSearch(event.target.value)
+    //setPage(1)
   }
 
   return (
