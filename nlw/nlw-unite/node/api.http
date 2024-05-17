@@ -1,0 +1,31 @@
+POST http://localhost:3333/events
+Content-Type: application/json
+
+{
+  "title": 1122,
+  "details": "New Details Max",
+  "maximumAtendees": 1
+}
+
+###
+
+POST http://localhost:3333/events/53713fc2-06bd-47b6-895d-454edbd654fc/atendees
+Content-Type: application/json
+
+{
+  "name": "Rafael Petersen",
+  "email": "rafael@email.com"
+}
+
+###
+GET http://localhost:3333/events/9e01ac8b-8026-4a8b-9e2a-002c23b2cc04
+
+###
+GET http://localhost:3333/atendees/2/badge
+
+
+###
+GET http://localhost:3333/atendees/5/check-in
+
+###
+GET http://localhost:3333/events/9e01ac8b-8026-4a8b-9e2a-002c23b2cc04/atendees?query=raf
