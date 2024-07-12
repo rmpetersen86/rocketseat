@@ -14,7 +14,7 @@ import { errorhandler } from './error-handler';
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
 app.register(fastifyCors, {
-  origin: '*',
+  
 })
 
 app.register(fastifySwagger, {

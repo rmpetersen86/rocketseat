@@ -17,8 +17,9 @@ export async function getAtendeeBadge(app: FastifyInstance){
         response: {
           200: z.object({
             badge: z.object({
-              name: z.string().email(),
-              email: z.string(),
+              id: z.number(),
+              name: z.string(),
+              email: z.string().email(),
               eventTitle: z.string(),
               checkInURL: z.string().url()
             })
@@ -26,38 +27,41 @@ export async function getAtendeeBadge(app: FastifyInstance){
         },
       }
     }, async (request, reply) => {
-      const { atendeeId } = request.params
-      
-      const atendee = await prisma.atendee.findUnique({
-        select: {
-          name: true,
-          email: true,
-          event: {
-            select: {
-              title: true
+      const { atendeeId } = request.params      
+      try{
+        const atendee = await prisma.atendee.findUnique({
+          select: {
+            name: true,
+            email: true,
+            event: {
+              select: {
+                title: true
+              }
             }
+          },
+          where: {
+            id: atendeeId,
           }
-        },
-        where: {
-          id: atendeeId,
+        })
+        if(atendee === null) {
+          throw new BadRequest('Participante não localizado')
         }
-      })
-
-      if(atendee === null) {
-        throw new BadRequest('Participante não localizado')
+        const baseURL = `${request.protocol}://${request.hostname}`      
+        const checkInURL = new URL(`/atendees/${atendeeId}/check-in`, baseURL)
+  
+        return reply.send({
+          badge: {
+            id: atendeeId,
+            name: atendee.name,
+            email: atendee.email,
+            eventTitle: atendee.event.title,
+            checkInURL: checkInURL.toString(),
+          }
+        })
+      }catch(error){        
+        console.log(error)
+        throw new BadRequest('Não localizado')
       }
-
-      const baseURL = `${request.protocol}://${request.hostname}`
       
-      const checkInURL = new URL(`/atendees/${atendeeId}/check-in`, baseURL)
-
-      return reply.send({
-        badge: {
-          name: atendee.name,
-          email: atendee.email,
-          eventTitle: atendee.event.title,
-          checkInURL: checkInURL.toString(),
-        }
-      })
     })
 }

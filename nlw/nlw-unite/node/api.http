@@ -2,9 +2,9 @@ POST http://localhost:3333/events
 Content-Type: application/json
 
 {
-  "title": 1122,
-  "details": "New Details Max",
-  "maximumAtendees": 1
+  "title": "Movimentação dos equipamentos DGi",
+  "details": "Evento para mudança de lugar dos equipamentos da DGI",
+  "maximumAtendees": 100
 }
 
 ###
@@ -18,14 +18,14 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3333/events/9e01ac8b-8026-4a8b-9e2a-002c23b2cc04
+GET http://localhost:3333/events/99128243-88bf-4a87-84c8-ff1eb6eee8a0
 
 ###
-GET http://localhost:3333/atendees/2/badge
+GET http://localhost:3333/atendees/10/badge
 
 
 ###
 GET http://localhost:3333/atendees/5/check-in
 
 ###
-GET http://localhost:3333/events/9e01ac8b-8026-4a8b-9e2a-002c23b2cc04/atendees?query=raf
+GET http://localhost:3333/events/53713fc2-06bd-47b6-895d-454edbd654fc/atendees
