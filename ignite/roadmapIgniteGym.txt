@@ -1,0 +1,47 @@
+Criar a aplicação npx create-expo-app nomeDoProjet --template
+blank (typescript) ou navigation
+
+instalar o babel-plugin-module resolver (--save-dev)
+npm i babel-plugin-module-resolver -D
+
+configurar p babel.config.js e o tsconfig.json
+
+instalar a biblioteca de fontes do google - roboto
+
+npx expo install expo-font @expo-google-fonts/roboto
+
+instalar biblioteca de componentes Native Base
+
+adicionar a propriedade
+
+"overrides": {
+    "react": "18.2.0"
+  },
+
+no arquivo package.json
+
+expo install react-native-safe-area-context
+
+expo install react-native-svg
+
+npm install native-base --legacy-peeer-deps
+
+
+instalar o SVG transformer
+
+npm install --save-dev react-native-svg-transformer
+
+
+* Fix para o Native Base
+Navigate to node_modules/native-base/src/core/NativeBaseProvider.tsx
+Delete <SSRProvider></SSRProvider> that wraps {children}. Take care not to delete {children}.
+Remove SSRProvider import. That is, delete this line import { SSRProvider } from '@react-native-aria/utils';
+Run npx patch-package native-base. Select yes in the prompt.
+
+instalar a nvagação
+
+npm install @react-navigation/native
+
+npm install react-native-screens react-native-safe-area-context
+
+npm install @react-navigation/native-stack

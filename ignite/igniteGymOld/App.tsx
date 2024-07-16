@@ -8,23 +8,20 @@ import {
 import { Loading } from "@components/loading";
 import React from "react";
 import { THEME } from "src/theme";
-import { AuthRoutes } from "@routes/auth.routes";
-import { NavigationContainer } from "@react-navigation/native";
+import { SignIn } from "@screens/signin";
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
 
   return (
-    <NavigationContainer>
-      <NativeBaseProvider theme={THEME}>
-        <StatusBar
-          barStyle="light-content"
-          backgroundColor="transparent"
-          translucent
-        />
-  
-        {fontsLoaded ? <AuthRoutes /> : <Loading />}
-      </NativeBaseProvider>
-    </NavigationContainer>
+    <NativeBaseProvider theme={THEME}>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
+
+      {fontsLoaded ? <SignIn /> : <Loading />}
+    </NativeBaseProvider>
   );
 }
